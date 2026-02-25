@@ -34,7 +34,6 @@ public class MainMenu implements Screen {
     @Override
     public void show() {
         // Prepare your screen here.
-        // Change \/
         //Background
         batch = new SpriteBatch();
         background = new Texture(Gdx.files.internal("Main Menu Background 1728 x 1080.png"));

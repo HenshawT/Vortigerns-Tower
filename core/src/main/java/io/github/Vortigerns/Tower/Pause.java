@@ -12,41 +12,41 @@ import com.badlogic.gdx.scenes.scene2d.utils.TextureRegionDrawable;
 import com.badlogic.gdx.graphics.g2d.TextureRegion;
 import com.badlogic.gdx.scenes.scene2d.InputEvent;
 
-public class GameScreen implements Screen {
+public class Pause implements Screen {
     private Game game;
     private SpriteBatch batch;
     private Texture background;
     private Stage stage;
-    private ImageButton pauseButton;
-    private Texture pauseTexture;
+    private ImageButton exitButton;
+    private Texture exitTexture;
 
-    public GameScreen(Game game) {
+    public Pause(Game game) {
         this.game = game;
     }
 
     @Override
     public void show() {
         this.batch = new SpriteBatch(); // Needed if you want to draw anything later
-        this.background = new Texture("GameScreenBackground.png");
+        this.background = new Texture("PauseMenuBackground.png");
         this.stage = new Stage();
-        pauseTexture = new Texture(Gdx.files.internal("Pause Button.png"));
-        pauseButton = new ImageButton(new TextureRegionDrawable(new TextureRegion(pauseTexture)));
-        pauseButton.setPosition(50,900);
-        pauseButton.setSize(100,100);
-        pauseButton.addListener(new ClickListener() {
+        exitTexture = new Texture(Gdx.files.internal("Pause Button.png"));
+        exitButton = new ImageButton(new TextureRegionDrawable(new TextureRegion(exitTexture)));
+        exitButton.setPosition(50,900);
+        exitButton.setSize(100,100);
+        exitButton.addListener(new ClickListener() {
             @Override
             public void clicked(InputEvent event, float x, float y) {
-                game.setScreen(new Pause(game));
+                Gdx.app.exit();
             }
         });
-        stage.addActor(pauseButton);
+        stage.addActor(exitButton);
         Gdx.input.setInputProcessor(stage);
     }
 
     @Override
     public void render(float delta) {
         this.batch.begin();
-        this.batch.draw(background, 0, 0);
+        this.batch.draw(background, 200, 150);
         this.batch.end();
         this.stage.act(delta);
         this.stage.draw();
@@ -69,7 +69,7 @@ public class GameScreen implements Screen {
         this.batch.dispose();
         this.background.dispose();
         this.stage.dispose();
-        this.pauseTexture.dispose();
+        this.exitTexture.dispose();
     }
 
 }
