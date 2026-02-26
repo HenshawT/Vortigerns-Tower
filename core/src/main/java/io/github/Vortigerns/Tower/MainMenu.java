@@ -1,7 +1,6 @@
 package io.github.Vortigerns.Tower;
 
 import com.badlogic.gdx.Screen;
-//Change \/
 import com.badlogic.gdx.graphics.Texture;
 import com.badlogic.gdx.graphics.g2d.SpriteBatch;
 import com.badlogic.gdx.Gdx;
@@ -17,7 +16,6 @@ import com.badlogic.gdx.scenes.scene2d.utils.TextureRegionDrawable;
 
 /** First screen of the application. Displayed after the application is created. */
 public class MainMenu implements Screen {
-    // Change\/
     private SpriteBatch batch;
     private Texture background;
     private Stage stage;
@@ -39,6 +37,7 @@ public class MainMenu implements Screen {
         background = new Texture(Gdx.files.internal("Main Menu Background 1728 x 1080.png"));
         //Buttons
         stage = new Stage();
+        Gdx.input.setInputProcessor(stage);
         startTexture = new Texture(Gdx.files.internal("Start Game Button 200 x 50.png"));
         exitTexture = new Texture(Gdx.files.internal("Exit Game Button 200 x 50.png"));
         startButton = new ImageButton(new TextureRegionDrawable(new TextureRegion(startTexture)));
@@ -63,14 +62,12 @@ public class MainMenu implements Screen {
         });
         stage.addActor(startButton);
         stage.addActor(exitButton);
-        Gdx.input.setInputProcessor(stage);
 
     }
 
     @Override
     public void render(float delta) {
         // Draw your screen here. "delta" is the time since last render in seconds.
-        // Change \/
         //Background
         batch.begin();
         batch.draw(background,0,0);
@@ -108,7 +105,6 @@ public class MainMenu implements Screen {
     @Override
     public void dispose() {
         // Destroy screen's assets here.
-        // Change \/
         batch.dispose();
         background.dispose();
         stage.dispose();

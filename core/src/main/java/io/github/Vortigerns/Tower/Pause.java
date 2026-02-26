@@ -31,7 +31,7 @@ public class Pause implements Screen {
         this.stage = new Stage();
         exitTexture = new Texture(Gdx.files.internal("Pause Button.png"));
         exitButton = new ImageButton(new TextureRegionDrawable(new TextureRegion(exitTexture)));
-        exitButton.setPosition(50,900);
+        exitButton.setPosition(250,800);
         exitButton.setSize(100,100);
         exitButton.addListener(new ClickListener() {
             @Override
